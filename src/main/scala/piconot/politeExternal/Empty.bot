@@ -1,0 +1,10 @@
+open0: **x* please, move left open0 (˵° ͜ʖ ͡°˵)   
+open0: **W* please, move X open1 (˵° ͜ʖ ͡°˵) 
+
+open1: x*** please, move up open1 (˵° ͜ʖ ͡°˵)
+open1: N**x please, move South fillBot2 (˵° ͜ʖ ͡°˵)
+
+fillBot2: ***x please, move South fillBot2 (˵° ͜ʖ ͡°˵)
+fillBot2: *x*S please, move E fillTop3 (˵° ͜ʖ ͡°˵)
+fillTop3: x*** please, move N fillTop3 (˵° ͜ʖ ͡°˵)
+fillTop3: Nx** please, move right fillBot2 thank you! :)

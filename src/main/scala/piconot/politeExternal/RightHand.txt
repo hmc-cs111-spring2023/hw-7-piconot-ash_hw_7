@@ -1,0 +1,13 @@
+movenorth0: *x** please, move East moveeast1 thank you! :)  
+movenorth0: xE** please, move North movenorth0 thank you! :)
+movenorth0: NE** please, move X ms3 thank you! :)
+
+moveeast1: ***x please, move down ms3 thank you! :)
+moveeast1: *x*S please, move right moveeast1 thank you! :)
+moveeast1: *ExS please, move X movewest2 thank you! :)
+movewest2: x*** please, move up movenorth0 thank you! :)    
+movewest2: N*x* please, move left movewest2 thank you! :)
+movewest2: NxW* please, move X moveeast1 thank you! :)
+ms3: **x* please, move  movewest2 thank you! :)  
+ms3: **Wx please, move down ms3 thank you! :)
+ms3: x*WS please, move X movenorth0 thank you! :)
