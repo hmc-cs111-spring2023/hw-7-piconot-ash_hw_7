@@ -1,3 +1,5 @@
+//This is borrowed code from the sample solution
+
 import Console.{RED, RESET}
 
 import picolib.maze._

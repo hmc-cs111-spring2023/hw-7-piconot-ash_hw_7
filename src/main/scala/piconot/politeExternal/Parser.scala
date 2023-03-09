@@ -6,26 +6,24 @@ import picolib.semantics._
 
 
 object PiconotParser extends RegexParsers {
-
-  // for parsing comments
   override protected val whiteSpace = """(\s|#.*)+""".r
 
-  // parsing interface
   def apply(s: String): ParseResult[List[Rule]] = parseAll(program, s)
 
   def program: Parser[List[Rule]] = rule *
 
   def rule: Parser[Rule] =
-    state ~ ":" ~ pattern ~ "please, move" ~ direction ~ state ~ "(˵° ͜ʖ ͡°˵)" | "thank you! :)" ^^ {
-      case stateNow ~ ":" ~ surroundings ~ "please, move" ~ moveDirection ~ newState ~ "(˵° ͜ʖ ͡°˵)" | "thank you! :)" =>
-        Rule(stateNow, surroundings, moveDirection, newState)
+    bothstate ~ ":" ~ pattern ~ "please, move" ~ dir ~ bothstate ~ "(˵° ͜ʖ ͡°˵)" | "thank you! :)" ^^ {
+      case stateNow ~ ":" ~ surroundings ~ "please, move" ~ singleDir ~ newState ~ "(˵° ͜ʖ ͡°˵)" | "thank you! :)" =>
+        Rule(stateNow, surroundings, singleDir, newState)
     }
 
-  def state: Parser[State] = """[a-zA-Z]*""".r ~ """\d""".r ^^ {
-    case letters ~ digit => State(digit)
+  def bothstate: Parser[State] = "^[^0-9]*$".r ~ """\d""".r ^^ {
+    case letters ~ digit => 
+      State(digit)
   }
   
-  def direction: Parser[MoveDirection] =
+  def dir: Parser[SingleDir] =
     (("up" ^^^ North)
       | ("right" ^^^ East)
       | ("left" ^^^ West)
@@ -40,28 +38,29 @@ object PiconotParser extends RegexParsers {
       | ("S" ^^^ South)
       | ("X" ^^^ StayHere)
       | failure("expected up/North/N or some variation"))
-
-  def pattern: Parser[Surroundings] =
-    ndirection ~ edirection ~ wdirection ~ sdirection ^^ { case n ~ e ~ w ~ s =>
+   
+  //pattern is essentially the same as the usual implementation
+  def pattern: Parser[Surroundings] = ndir ~ edir ~ wdir ~ sdir ^^ { 
+    case n ~ e ~ w ~ s =>
       Surroundings(n, e, w, s)
     }
 
-  def ndirection: Parser[RelativeDescription] =
+  def ndir: Parser[RelativeDescription] =
     (("N" ^^^ Blocked)
       | odirection
       | failure("expected N, or *, or x"))
 
-  def edirection: Parser[RelativeDescription] =
+  def edir: Parser[RelativeDescription] =
     (("E" ^^^ Blocked)
       | odirection
       | failure("expected E, or *, or x"))
 
-  def wdirection: Parser[RelativeDescription] =
+  def wdir: Parser[RelativeDescription] =
     (("W" ^^^ Blocked)
       | odirection
       | failure("expected W, or *, or x"))
 
-  def sdirection: Parser[RelativeDescription] =
+  def sdir: Parser[RelativeDescription] =
     (("S" ^^^ Blocked)
       | odirection
       | failure("expected S, or *, or x"))

@@ -1,21 +1,10 @@
-# A Picobot program that can fill an empty room
+open0: **x* please, move left open0 (˵° ͜ʖ ͡°˵)   
+open0: **W* please, move X open1 (˵° ͜ʖ ͡°˵) 
 
-# States 0 and 1: move to the top left
+open1: x*** please, move up open1 (˵° ͜ʖ ͡°˵)
+open1: N**x please, move South fillBot2 (˵° ͜ʖ ͡°˵)
 
-# State 0: move left
-open0: **x* please, move left open0 (˵° ͜ʖ ͡°˵)   # go all the way to the left
-open0: **W* please, move X open1 (˵° ͜ʖ ͡°˵)  # can't go left anymore, so try to go up
-
-# State 1: move up
-open1: x*** please, move North open1 (˵° ͜ʖ ͡°˵) # go all the way to the top
-open1: N**x please, move down fillBot2 (˵° ͜ʖ ͡°˵) # can't go up any more, so try to go down
-
-# States 2 and 3: fill from top to bottom, left to right
-
-# State 2: fill this column to the bottom
-fillBot2: ***x please, move South fillBot2 (˵° ͜ʖ ͡°˵) # go all the way to the bottom
-fillBot2: *x*S please, move E fillTop3 (˵° ͜ʖ ͡°˵) # can't go down anymore, so try to go right
-
-# State 3: fill this column to the top
-fillTop3: x*** please, move N fillTop3 (˵° ͜ʖ ͡°˵) # go all the way to the top
-fillTop3: Nx** please, move right fillBot2 (˵° ͜ʖ ͡°˵) # can't go up anymore, so try to go right
+fillBot2: ***x please, move South fillBot2 (˵° ͜ʖ ͡°˵)
+fillBot2: *x*S please, move E fillTop3 (˵° ͜ʖ ͡°˵)
+fillTop3: x*** please, move N fillTop3 (˵° ͜ʖ ͡°˵)
+fillTop3: Nx** please, move right fillBot2 thank you! :)
