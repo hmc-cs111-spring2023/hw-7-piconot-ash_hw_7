@@ -1,8 +1,3 @@
+open0: N*** please, move right completeCalib1 (˵° ͜ʖ ͡°˵)
 
-open: please move up when(Open, Anything, Anything, Anything) completeCalib (˵° ͜ʖ ͡°˵)
-
-completeCalib: please move right when(Anything, Anything, Open, Anything) startSwipe
-
-startSwipe: please move down 5 endSwipe
-
-endSwipe:  blah blah blah thank you! :)
+completeCalib1: *E** please, move S startSwipe2 thank you! :)
