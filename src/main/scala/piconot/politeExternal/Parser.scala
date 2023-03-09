@@ -21,13 +21,9 @@ object PiconotParser extends RegexParsers {
         Rule(stateNow, surroundings, moveDirection, newState)
     }
 
-  def state: Parser[State] =
-    val sLength = _.length()
-    val numStr = _.drop(sLength - 1)
-    val regex = """\d""".r
-    regex.pattern.matcher(numStr).matches ^^ {
-        State(numStr) 
-    }  
+  def state: Parser[State] = """[a-zA-Z]*""".r ~ """\d""".r ^^ {
+    case letters ~ digit => State(digit)
+  }
   
   def direction: Parser[MoveDirection] =
     (("up" ^^^ North)
